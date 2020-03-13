@@ -16,76 +16,69 @@ public class exercise21_09 {
 	
 	public static void main(String[] args) {
 		
-	    String[][] stateCapital = {
-	      {"Alabama", "Montgomery"},
-	      {"Alaska", "Juneau"},
-	      {"Arizona", "Phoenix"},
-	      {"Arkansas", "Little Rock"},
-	      {"California", "Sacramento"},
-	      {"Colorado", "Denver"},
-	      {"Connecticut", "Hartford"},
-	      {"Delaware", "Dover"},
-	      {"Florida", "Tallahassee"},
-	      {"Georgia", "Atlanta"},
-	      {"Hawaii", "Honolulu"},
-	      {"Idaho", "Boise"},
-	      {"Illinois", "Springfield"},
-	      {"Indiana", "Indianapolis"},
-	      {"Iowa", "Des Moines"},
-	      {"Kansas", "Topeka"},
-	      {"Kentucky", "Frankfort"},
-	      {"Louisiana", "Baton Rouge"},
-	      {"Maine", "Augusta"},
-	      {"Maryland", "Annapolis"},
-	      {"Massachusettes", "Boston"},
-	      {"Michigan", "Lansing"},
-	      {"Minnesota", "Saint Paul"},
-	      {"Mississippi", "Jackson"},
-	      {"Missouri", "Jefferson City"},
-	      {"Montana", "Helena"},
-	      {"Nebraska", "Lincoln"},
-	      {"Nevada", "Carson City"},
-	      {"New Hampshire", "Concord"},
-	      {"New Jersey", "Trenton"},
-	      {"New York", "Albany"},
-	      {"New Mexico", "Santa Fe"},
-	      {"North Carolina", "Raleigh"},
-	      {"North Dakota", "Bismarck"},
-	      {"Ohio", "Columbus"},
-	      {"Oklahoma", "Oklahoma City"},
-	      {"Oregon", "Salem"},
-	      {"Pennsylvania", "Harrisburg"},
-	      {"Rhode Island", "Providence"},
-	      {"South Carolina", "Columbia"},
-	      {"South Dakota", "Pierre"},
-	      {"Tennessee", "Nashville"},
-	      {"Texas", "Austin"},
-	      {"Utah", "Salt Lake City"},
-	      {"Vermont", "Montpelier"},
-	      {"Virginia", "Richmond"},
-	      {"Washington", "Olympia"},
-	      {"West Virginia", "Charleston"},
-	      {"Wisconsin", "Madison"},
-	      {"Wyoming", "Cheyenne"}
-	    };
-
-	    Scanner input = new Scanner(System.in);
+	    Map<String, String> stateCapital = new LinkedHashMap<>();
+	      stateCapital.put("alabama", "Montgomery");
+	      stateCapital.put("alaska", "Juneau");
+	      stateCapital.put("arizona", "Phoenix");
+	      stateCapital.put("arkansas", "Little Rock");
+	      stateCapital.put("california", "Sacramento");
+	      stateCapital.put("colorado", "Denver");
+		  stateCapital.put("connecticut", "Hartford");
+		  stateCapital.put("delaware", "Dover");
+		  stateCapital.put("florida", "Tallahassee");
+		  stateCapital.put("georgia", "Atlanta");
+		  stateCapital.put("hawaii", "Honolulu");
+		  stateCapital.put("idaho", "Boise");
+		  stateCapital.put("illinois", "Springfield");
+		  stateCapital.put("indiana", "Indianapolis");
+		  stateCapital.put("iowa", "Des Moines");
+		  stateCapital.put("kansas", "Topeka");
+		  stateCapital.put("kentucky", "Frankfort");
+	      stateCapital.put("louisiana", "Baton Rouge");
+	      stateCapital.put("maine", "Augusta");
+		  stateCapital.put("maryland", "Annapolis");
+		  stateCapital.put("massachusettes", "Boston");
+		  stateCapital.put("michigan", "Lansing");
+		  stateCapital.put("minnesota", "Saint Paul");
+		  stateCapital.put("mississippi", "Jackson");
+		  stateCapital.put("missouri", "Jefferson City");
+		  stateCapital.put("montana", "Helena");
+		  stateCapital.put("nebraska", "Lincoln");
+		  stateCapital.put("nevada", "Carson City");
+		  stateCapital.put("new hampshire", "Concord");
+		  stateCapital.put("new jersey", "Trenton");
+		  stateCapital.put("new york", "Albany");
+		  stateCapital.put("new mexico", "Santa Fe");
+		  stateCapital.put("north carolina", "Raleigh");
+		  stateCapital.put("north dakota", "Bismarck");
+		  stateCapital.put("ohio", "Columbus");
+		  stateCapital.put("oklahoma", "Oklahoma City");
+		  stateCapital.put("oregon", "Salem");
+		  stateCapital.put("pennsylvania", "Harrisburg");
+		  stateCapital.put("rhode island", "Providence");
+		  stateCapital.put("south carolina", "Columbia");
+		  stateCapital.put("south dakota", "Pierre");
+		  stateCapital.put("tennessee", "Nashville");
+		  stateCapital.put("texas", "Austin");
+		  stateCapital.put("utah", "Salt Lake City");
+		  stateCapital.put("vermont", "Montpelier");
+		  stateCapital.put("virginia", "Richmond");
+		  stateCapital.put("washington", "Olympia");
+		  stateCapital.put("west virginia", "Charleston");
+		  stateCapital.put("wisconsin", "Madison");
+		  stateCapital.put("wyoming", "Cheyenne");
 	    
-	    int correctCount = 0;
 
-	    for (int i = 0; i < stateCapital.length; i++) {
-	      // Prompt the user with a question
-	      System.out.print("What is the capital of " + stateCapital[i][0] + "? ");
-	      String capital = input.nextLine().trim().toLowerCase();
-	      
-	      if (capital.toLowerCase().equals(stateCapital[i][1].toLowerCase())) {
-	        System.out.println("Your answer is correct");
-	        correctCount++;
-	      }
-	      else
-	        System.out.println("The correct answer should be " + stateCapital[i][1]);
-	    }
-
-	    System.out.println("The correct count is " + correctCount);
-	  }
+	   Scanner input = new Scanner(System.in);
+	    
+	   for (int i = 0; i <= stateCapital.size(); i++) {
+		   	System.out.print("Enter a State Name: ");
+	   		String capital = input.nextLine().trim().toLowerCase();
+	   		System.out.println("The Capital for " + capital + " is: " + stateCapital.get(capital));
+	   }
+		  //System.out.println("Display Entries in hashMap stateCapital");
+		  //System.out.println(stateCapital + "/n");
+		  
+		  }
+	
 	}
