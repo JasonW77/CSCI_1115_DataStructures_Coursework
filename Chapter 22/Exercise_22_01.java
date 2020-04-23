@@ -1,6 +1,6 @@
 /**
 Author: Jason Waters
-Date: 4/21/2020
+Date: 4/23/2020
 Description: Exercise 22-01 for the CSCI 1115 Class at Southwest Tech
 */
 	
@@ -32,13 +32,22 @@ public class Exercise_22_01 {
 		
 		// Find the maximum consecutive increasingly ordered substring
 		for (int i = 0; i < string.length(); i++) { 		
-			if (list.size() > 1 && string.charAt(i) <= list.getLast() && 
+			
+			if (list.size() >= 1 && string.charAt(i) <= list.getLast() || 
 				list.contains(string.charAt(i))) {
 				list.clear(); 
 			}
 
 			list.add(string.charAt(i)); 
-
+			/**
+			System.out.println("list size: " + list.size());
+			System.out.println("string.charAt " + i + ": " + string.charAt(i));
+			System.out.println("list.getLast: " + list.getLast());
+			System.out.println("String: " + string );
+			System.out.println("list: " + list );
+			System.out.println("Max list: " + max );
+			System.out.println();
+			*/
 			if (list.size() > max.size()) { 
 				max.clear();
 				max.addAll(list);
