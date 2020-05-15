@@ -52,5 +52,6 @@ public class Exercise24_01 {
 		System.out.println("list2:" + list2);
 		list1.retainAll(list2);
 		System.out.println("After retainAll:" + list1 + "\n");
+
 	}
 }

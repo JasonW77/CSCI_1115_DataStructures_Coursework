@@ -46,10 +46,11 @@ public abstract class MyAbstractList<E> implements MyList<E> {
 		Returns true if this list changed as a result of the call */
 	public boolean retainAll(MyList<E> otherList) {
 		boolean changeSize = false;
-		for (int i =size - 1; i >= 0; i--){
+		for (int i = 0; i < size(); i++){
 			E e = get(i);
 			if (!otherList.contains(e)) {
-				remove(i);
+				remove(e);
+				i--;
 				changeSize = true;
 				
 			}
