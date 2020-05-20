@@ -40,11 +40,12 @@ class TwoWayLinkedList<E> extends java.util.AbstractSequentialList<E> {
 		head = newNode; // head points to the new node
 		size++; // Increase list size
 
-		if (tail == null) // the new node is the only node in list
+		if (tail == null){ // the new node is the only node in list
 			tail = head;
-
-		if (head != tail)
-			// For a two-way linked list, make the next item's previous element the head
+		}
+		if (head != tail){ // For a two-way linked list, make the next item's previous element the head
+			head.next.previous = head;
+		}
 	}
 
 	/** Add an element to the end of the list */
@@ -63,6 +64,7 @@ class TwoWayLinkedList<E> extends java.util.AbstractSequentialList<E> {
 		size++; // Increase size
 
 		// For a two-way linked list, link the tail's previous element to temp
+		tail.previous = temp;
 	}
 
 	/**
@@ -85,7 +87,9 @@ class TwoWayLinkedList<E> extends java.util.AbstractSequentialList<E> {
 			size++;
 
 			// For a two-way linked list, link temp's previous element to current's next element
+			temp.previous = current.next;
 			// For a two-way linked list, link current's next's previous element to current
+			current.next.previous = current;
 		}
 	}
 
