@@ -1,3 +1,37 @@
+/*
+Assignment Author: Jason Waters
+Date: 5/21/2020
+Exercise: 25-01
+Class: CSCI 1115
+Discription: 
+(Add new methods in BST) Using Exercise25_1Preview the document, add the following new methods in BST.
+
+/** Displays the nodes in a breadth-first traversal  
+public void breadthFirstTraversal()
+
+/** Returns the height of this binary tree 
+public int height() 
+breadthFirstTraversal() Algorithm:
+
+To build this traversal, we need to look at a node's left and right child. Since we can only look at one at a time, we will create a list (called nodeList) that keeps track of the nodes whose second child we need to investigate. Since our BST is made up TreeNodes, this list should hold TreeNode objects.
+We first need to check if the root has a value. If not, end the method. If it does, we will add root to nodeList.
+While nodeList still contains nodes to search, we will grab the first item (called current), remove current from the list, and print current.
+Check to see if current has a left child. If so, add to nodeList. 
+Check to see if current has a right child. If so, add to nodeList. 
+ 
+
+height Algorithm():
+
+For this method, we will 2 height methods. One has no parameters and will default to using root to determine the height. The second has a TreeNode node parameter and will find the height of the BST from that respective node. The second method will use recursion.
+
+For the no parameter height method, we call the parameter height method with root as an argument.
+The parameter height method accepts root as a parameter. If root does not have a value, return 0 for height.
+Otherwise, compare the height of the left child node to the height of the right child node. To find these heights you will need to recursively call the method.
+
+*/
+
+
+
 public class Exercise25_01 {
   public static void main(String[] args) {
     new Exercise25_01();
