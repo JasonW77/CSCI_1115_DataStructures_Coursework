@@ -1,4 +1,17 @@
+/*
+Assignment Author: Jason Waters
+Date: 5/21/2020
+Exercise: 25-03
+Class: CSCI 1115
+Discription: 
+
+(Implement inorder traversal without using recursion) Implement the inorder method in BST using a stack instead of recursion.  Exercise25_03 prompts the user to enter 10 integers, stores them in a BST, and invokes the inorder method to display the elements.
+*/
+
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Stack;
 
 public class Exercise25_03 {
   public static void main(String[] args) {
@@ -294,6 +307,20 @@ public class Exercise25_03 {
     /** Inorder traversal from the root */
     public void nonRecursiveInorder() {
       
+        if (root == null) { return; }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode current = root;
+        while (true) {
+          if (current != null) {
+            stack.push(current);
+            current = current.left;
+          } else {
+            if (stack.isEmpty()) { break; }
+            current = stack.pop();
+            System.out.print(current.element + " ");
+            current = current.right;
+          }
+        }
+      }
     }
   }
-}
