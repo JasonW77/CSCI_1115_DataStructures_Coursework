@@ -1,4 +1,4 @@
-public class Exercise27_02 {
+public class Exercise27_03 {
   /** Main method */
   public static void main(String[] args) {
     MyHashMap<Integer, Integer> map = new MyHashMap<>();
@@ -95,8 +95,8 @@ public class Exercise27_02 {
         if (table[i].key.equals(key)) 
           return table[i].value;
           
-        //i = ((k) % table.length) + i * (7 – (k % 7) % table.length);
-        i = k + j++ * (k + j * 7(k));
+        i = ((k) % table.length) + i * (7 - (k % 7) % table.length);
+        
         j++;
       }
       
@@ -143,7 +143,7 @@ public class Exercise27_02 {
       int j = 1;
       int i = k;
       while (table[i] != null && table[i].key != null) {
-        i = Math.abs((k + j * j) % table.length);
+        i = ((k) % table.length) + i * (7 - (k % 7) % table.length);
         j++;
       }
       
@@ -161,7 +161,7 @@ public class Exercise27_02 {
       int j = 1;
       int i = k;
       while (table[i] != null && (table[i].key == null || !table[i].key.equals(key))) {
-        i = Math.abs((k + j * j) % table.length);
+        i = ((k) % table.length) + i * (7 - (k % 7) % table.length);
         j++;
       }
 
