@@ -1,3 +1,16 @@
+/*
+Assignment Author: Jason Waters
+Date: 6/1/2020
+Exercise: 27-03
+Class: CSCI 1115
+Discription: 
+
+(Implement MyMap using open addressing with double hashing) You will modify a class that implements MyMap so that it uses open addressing with double hashing.
+For simplicity, use f(key) = key % size as the hash function, where size is the hash-table size. The second function should be g(key) = prime- key % prime, where prime is a prime number of your choosing. Initially, the hash-table size is 4. The table size is doubled whenever the load factor exceeds the threshold (0.5) (this should be done for you already).
+After incrementing i, you need to mod by table.length so that your keys wrap around the array indices. Watch the supplemental video for more explanation.
+Download these files to start. Exercise 27_02 implements MyMap using quadratic probing. Modify this to use double hashing for open addressing. Edit get, put, and remove.  Exercise25_03 prompts the user to enter 10 integers, stores them in a BST, and invokes the inorder method to display the elements.
+*/
+
 public class Exercise27_03 {
   /** Main method */
   public static void main(String[] args) {
