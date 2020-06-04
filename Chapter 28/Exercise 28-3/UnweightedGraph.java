@@ -119,7 +119,7 @@ public class UnweightedGraph<V> implements Graph<V> {
 					}
 				}
 			}
-	
+		}
 
 		return new SearchTree(v, parent, searchOrder);
 	}
