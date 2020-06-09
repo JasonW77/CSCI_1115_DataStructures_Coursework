@@ -240,29 +240,39 @@ public class UnweightedGraph<V> implements Graph<V> {
       return searchOrder.size();
     }
     
-    public List<Integer> getACycle() { 
-      create a list with all the vertices
-      create a boolean array to determine if a vertex has been visited (false by default)
-      create an int array to determine parent of vertex (-1 by default)
-      while (there are unvisited vertices) { // check list size for this 
-        pick one, say v; 
-        create stack;
-        push v to the stack; 
-        mark v visited; 
-        remove v from list with all vertices;
-        while (the stack is not empty) { 
-          peek a vertex from the stack, say x; 
-          if (x has no neighbors) {
-            pop a vertex from the stack;
+    public List<Integer> getACycle(int u) { 
+      //create a list with all the vertices
+      List<Integer> searchOrder = new ArrayList<Integer>();
+  
+      //create a boolean array to determine if a vertex has been visited (false by default)
+      boolean[] isVisited = new boolean[vertices.size()];
+      
+      //create an int array to determine parent of vertex (-1 by default)
+      int[] parent = new int[vertices.size()];
+      for (int i = 0; i < parent.length; i++) {
+        parent[i] = -1;
+      }
+      
+      while (searchOrder.getParent(current) != -1) { // check list size for this 
+!!!!!!  pick one, say v; 
+        StackOfIntegers stack = new StackOfIntegers(); //create stack;
+        stack.push(v);                         //push v to the stack; 
+        isVisited.add(v);                       //mark v visited; 
+        searchOrder.remove(v);                 // from list with all vertices;
+        
+        while (!stack.empty()) { 
+          stack.peek(x);                       //peek a vertex from the stack, say x; 
+          if (!getNeighbors(x)) {
+            stack.pop();                      //pop a vertex from the stack;
           }
           else {
             loop through all neighbors of x with loop variable i {
                Let e be the edge between x and the neighbor; 
                if (ending vertex of e (e.v) is not visited) { 
                  parent[e.v] = x; 
-                 push e.v onto the stack; 
-                 mark e.v visited; 
-                 remove e.v from list with all vertices;
+                 stack.push(e.v);               // onto the stack; 
+                 isVisited.add(e.v);           //mark e.v visited; 
+                 searchOrder.remove(e.v);       //remove e.v from list with all vertices;
                  remove loop variable i from x's neighbor list;
                  break;
                } 
@@ -282,7 +292,7 @@ public class UnweightedGraph<V> implements Graph<V> {
            } 
          }
       }
-      return an empty list;
+      return null; //return an empty list;
     }
     /** Return the path of vertices from a vertex to the root */
     public List<V> getPath(int index) {
