@@ -1,6 +1,6 @@
 /*
 Assignment Author: Jason Waters
-Date: 6/9/2020
+Date: 6/11/2020
 Exercise: 28-07
 Class: CSCI 1115
 Discription: 
@@ -70,6 +70,7 @@ public List<Integer> getACycle() {
 	return an empty list;
 }
 */
+
 public class Exercise28_07 {
 	public static void main(String[] args) {
 		String[] vertices = { "Seattle", "San Francisco", "Los Angeles",

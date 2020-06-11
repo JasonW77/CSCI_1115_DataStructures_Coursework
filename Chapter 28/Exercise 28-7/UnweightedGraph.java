@@ -204,7 +204,61 @@ public class UnweightedGraph<V> implements Graph<V> {
 
     return new SearchTree(v, parent, searchOrder);
   }
-
+  public List<Integer> getACycle() { 
+    List<Integer> allVertices = new ArrayList<Integer>();  //create a list with all the vertices
+      for (int i = 0; i < vertices.size(); i++) {
+          allVertices.add(i);
+      }
+    //create a boolean array to determine if a vertex has been visited (false by default)
+    boolean[] isVisited = new boolean[vertices.size()];
+    //create an int array to determine parent of vertex (-1 by default)
+    int[] parent = new int[vertices.size()];
+    for (int i = 0; i < parent.length; i++) {
+        parent[i] = -1;
+    }
+    while (allVertices.size() != -1) { // check list size for this 
+      int v = allVertices.get(0);                       //pick one, say v; 
+      Stack<Integer> stack = new Stack<>(); //create stack;
+      stack.push(v);                         //push v to the stack; 
+      isVisited[v] = true ;                  //mark v as visited; 
+      allVertices.remove(new Integer(v));    // remove v from list with all vertices;
+      
+      while (!stack.empty()) { 
+        int x = stack.peek();               //peek a vertex from the stack, say x; 
+        if (neighbors.get(x).size() == 0) {
+          stack.pop();                      //pop a vertex from the stack;
+            }
+        else {
+            //loop through all neighbors of x with loop variable i {
+             for (int i = 0; i < neighbors.get(x).size(); i++) {
+             Edge e = neighbors.get(x).get(i); //Let e be the edge between x and the neighbor; 
+             if (!isVisited[e.v]) { 
+               parent[e.v] = x; 
+               stack.push(e.v);               // onto the stack; 
+               isVisited[e.v] = true;           //mark e.v visited; 
+               allVertices.remove(new Integer(e.v));       //remove e.v from list with all vertices;
+               neighbors.get(x).remove(i);   //remove loop variable i from x's neighbor list;
+               break;
+              } 
+        else if (e.v != parent[x]) {       //e.v is not x's parent
+               ArrayList<Integer> list = new ArrayList<>(); //create an Integer ArrayList;
+               list.add(e.v);                 //add e.v to list;
+               while (x != e.v && x != -1) {
+                  list.add(x);                  //add x to list;
+                  x = parent[x];              // is parent of x;
+               }
+               return list;
+              }
+        else { 
+               neighbors.get(x).remove(i);   // remove loop variable i from list with neighbors;
+             }
+           }   
+         } 
+       }
+    }
+    return null; //return an empty list;
+  }
+  
   /** Tree inner class inside the AbstractGraph class */
   /** To be discussed in Section 28.6 */
   public class SearchTree {
@@ -240,57 +294,7 @@ public class UnweightedGraph<V> implements Graph<V> {
       return searchOrder.size();
     }
     
-    public List<Integer> getACycle(int u) { 
-      List<Integer> searchOrder = new ArrayList<Integer>();  //create a list with all the vertices
-      //create a boolean array to determine if a vertex has been visited (false by default)
-      boolean[] isVisited = new boolean[vertices.size()];
-      //create an int array to determine parent of vertex (-1 by default)
-      int[] parent = new int[vertices.size()];
-      for (int i = 0; i < parent.length; i++) {
-          parent[i] = -1;
-      }
-      while (searchOrder.size() != -1) { // check list size for this 
-        int v = parent[0];                       //pick one, say v; 
-        Stack<V> stack = new Stack<>(); //create stack;
-        stack.push(v);                         //push v to the stack; 
-        isVisited.add[v] ;                       //mark v as visited; 
-        searchOrder.remove(v);                 // remove v from list with all vertices;
-        
-        while (!stack.empty()) { 
-          int x = stack.peek(x);               //peek a vertex from the stack, say x; 
-          if (!neighbors.get(x)) {
-            stack.pop(x);                      //pop a vertex from the stack;
-              }
-          else {
-              //loop through all neighbors of x with loop variable i {
-               for (int i : neighbors.get(v)) {
-               Edge e = neighbors.get(x).get(i); //Let e be the edge between x and the neighbor; 
-               if (!isVisited[i]) { 
-                 parent[e.v] = x; 
-                 stack.push(e.v);               // onto the stack; 
-                 isVisited.add(e.v);           //mark e.v visited; 
-                 searchOrder.remove(e.v);       //remove e.v from list with all vertices;
-                 neighbors.get(x).remove(i);                             //remove loop variable i from x's neighbor list;
-                 break;
-                } 
-          else if (!getParent(x)) {       //e.v is not x's parent
-                 ArrayList<Integer> list = new ArrayList<>(); //create an Integer ArrayList;
-                 list.add(e.v);                 //add e.v to list;
-                 while (x != e.v && x != -1) {
-                    list.add(x);                  //add x to list;
-                    x = list.getParent(x);              // is parent of x;
-                 }
-                 return list;
-                }
-          else { 
-                 list.remove(i);           // remove loop variable i from list with neighbors;
-               }
-             }   
-           } 
-         }
-      }
-      return null; //return an empty list;
-    }
+    
     /** Return the path of vertices from a vertex to the root */
     public List<V> getPath(int index) {
       ArrayList<V> path = new ArrayList<>();
