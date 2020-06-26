@@ -45,7 +45,7 @@ public class Exercise31_09Client extends Application {
     // To complete later
     taClient.setOnKeyPressed(e -> {
       if (e.getCode() == KeyCode.ENTER){ 
-        taServer.setText(taClient.getText().trim());
+        taServer.appendText("\n" + taClient.getText().trim());
        
         try {
           outputToServer.writeUTF(taClient.getText());
@@ -75,7 +75,7 @@ public class Exercise31_09Client extends Application {
             //receive messages
             String messFromServer = inputFromServer.readUTF();
             System.out.println("New message from server!");
-            taServer.setText(messFromServer);
+            taServer.appendText("\n" + messFromServer.trim());
           }
       }catch (IOException ex) {
         System.out.println(ex);
