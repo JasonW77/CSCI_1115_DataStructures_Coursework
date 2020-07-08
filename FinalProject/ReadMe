@@ -16,7 +16,7 @@ The program starts empty and the user can enter new items by clicking on the "En
 
 The user will then enter an "Item Name", "Quantity", "Expiration", "Row Location", and "Column Loaction" in the respective fields.
 when the user finishes with the data entry, they will click the "Finish" button and the entry will be saved in the inventory.
-[Item Entry Exaample] ()
+[Item Entry Exaample] (https://github.com/JasonW77/CSCI_1115_DataStructures_Coursework/blob/master/FinalProject/Screen%20Shot%202020-07-08%20at%2011.09.19%20AM.png)
 
 To search for an item already in the inventory, the user will click the "Item Search" button. then enter the name of the item to be searched and hit the enter key, if the item is in the database the information will be returned.
 [Item Search Example]()
