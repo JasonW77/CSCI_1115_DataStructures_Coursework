@@ -12,18 +12,22 @@ I created this program for my final project in that clas as it encompasses the r
 This program is utilized via a javafx GUI.
 
 The program starts empty and the user can enter new items by clicking on the "Enter New Item" button. 
+[Main Menu Example]()
+
 The user will then enter an "Item Name", "Quantity", "Expiration", "Row Location", and "Column Loaction" in the respective fields.
 when the user finishes with the data entry, they will click the "Finish" button and the entry will be saved in the inventory.
+[Item Entry Exaample] ()
 
 To search for an item already in the inventory, the user will click the "Item Search" button. then enter the name of the item to be searched and hit the enter key, if the item is in the database the information will be returned.
+[Item Search Example]()
 
 At any point in a data entry if a mistake has been made or the user wishes to cancel thier input or task they can click the "Clear Entry" button to return to the previous menu.
+[Cancel Entry Example]()
 
 
 
-[Game Over Example](https://github.com/JasonW77/CSCI_1110_OOP_Coursework/blob/master/Final%20Project/Game%20end.png)
 
-[Score Sheet](https://github.com/JasonW77/CSCI_1110_OOP_Coursework/blob/master/Final%20Project/Score%20sheet.png), this time the second player will be placing the boats and the first player will be dropping bombs.
+
 
 ## Code Example
 here is a code example of the user adding an item to the database.
