@@ -92,9 +92,33 @@ public class Pantry_Goo_ee extends Application {
 			if (e.getCode() == KeyCode.ENTER){
 				if (itemQuan.isVisible() != true){
 				String seaItem;
+				
+				itemName.setVisible(false);
+				itemQuan.setVisible(false);
+				itemExp.setVisible(false);
+				itemRLoc.setVisible(false);
+				itemCLoc.setVisible(false);
+				
+				label1.setVisible(true);
+				label2.setVisible(true);
+				label3.setVisible(true);
+				label4.setVisible(true);
+				label5.setVisible(true);
+				
+				btFinish.setVisible(false);
+				btNewItem.setVisible(false);
+				btItemSearch.setVisible(false);
+				btClearEntry.setVisible(true);
+				
 				seaItem = itemName.getText().trim();
 				System.out.println("Search Item Detected: " + seaItem);
 				System.out.println(map.get(seaItem));
+				
+				label1.setText("Item Name: " + ((Pantry) map.get(seaItem)).getIn());
+				label2.setText("Quantity: " + ((Pantry) map.get(seaItem)).getQuantity());
+				label3.setText("Expiration: " + ((Pantry) map.get(seaItem)).getExpiration());
+				label4.setText("Row Location: " + ((Pantry) map.get(seaItem)).getRow());
+				label5.setText("Column Location: " + ((Pantry) map.get(seaItem)).getColumn());
 				}
 			}
 		});
@@ -116,10 +140,37 @@ public class Pantry_Goo_ee extends Application {
 			int iCL = Integer.parseInt(itemCLoc.getText().trim());
 			
 			Pantry pan = new Pantry(iN, iQ, iE, iRL, iCL);
-			map.put(pan.getiN(), pan);
-
-			System.out.println(pan.toString() + "\n");
-			System.out.println(map + "/n");
+			map.put(pan.getIn(), pan);
+			
+			System.out.println(pan.myToString() + "\n");
+			//System.out.println(map + "/n");
+			
+			btFinish.setVisible(false);
+			btNewItem.setVisible(true);
+			btItemSearch.setVisible(true);
+			btClearEntry.setVisible(false);
+			
+			itemName.setVisible(false);
+			itemName.setText(" ");
+			itemQuan.setVisible(false);
+			itemQuan.setText(" ");
+			itemExp.setVisible(false);
+			itemExp.setText(" ");
+			itemRLoc.setVisible(false);
+			itemRLoc.setText(" ");
+			itemCLoc.setVisible(false);
+			itemCLoc.setText(" ");
+			
+			label1.setVisible(false);
+			label1.setText("Item Name: ");
+			label2.setVisible(false);
+			label2.setText("Quantity: ");
+			label3.setVisible(false);
+			label3.setText("Expiration: ");
+			label4.setVisible(false);
+			label4.setText("Row Location: ");
+			label5.setVisible(false);
+			label5.setText("Column Location: ");
 			
 		});
 		
@@ -183,10 +234,15 @@ public class Pantry_Goo_ee extends Application {
 			itemCLoc.setText(" ");
 			
 			label1.setVisible(false);
+			label1.setText("Item Name: ");
 			label2.setVisible(false);
+			label2.setText("Quantity: ");
 			label3.setVisible(false);
+			label3.setText("Expiration: ");
 			label4.setVisible(false);
+			label4.setText("Row Location: ");
 			label5.setVisible(false);
+			label5.setText("Column Location: ");
 				
 		});
 	}

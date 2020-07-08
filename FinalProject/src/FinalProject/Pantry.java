@@ -61,7 +61,7 @@ public class Pantry{
 	/** Getter for item name
 	 * @return iN Item Name
 	 */
-	public String getiN(){
+	public String getIn(){
 		return iN;
 	}
 	/** Getter for item quantity
@@ -127,8 +127,9 @@ public class Pantry{
 		this.entryDate = entryDate;
 	}
 	/** to string method
+	 * @return Object information inside the console
 	*/
-	public String toString(){
+	public String myToString(){
 		return "Pantry: \n" + " Item Name: " + iN + "\n Item Quantitiy: " + iQ + "\n Item Row Location: " + iRL + "\n Item Column Location: " + iCL + "\n Item Expiration Date: " + iE + "\n Item Entry Date: " + entryDate;
 	}
 }
