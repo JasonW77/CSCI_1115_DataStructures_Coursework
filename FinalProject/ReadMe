@@ -12,7 +12,7 @@ I created this program for my final project in that clas as it encompasses the r
 This program is utilized via a javafx GUI.
 
 The program starts empty and the user can enter new items by clicking on the "Enter New Item" button. 
-[Main Menu Example]()
+[Main Menu Example](https://github.com/JasonW77/CSCI_1115_DataStructures_Coursework/blob/master/FinalProject/Screen%20Shot%202020-07-08%20at%2011.07.47%20AM.png)
 
 The user will then enter an "Item Name", "Quantity", "Expiration", "Row Location", and "Column Loaction" in the respective fields.
 when the user finishes with the data entry, they will click the "Finish" button and the entry will be saved in the inventory.
