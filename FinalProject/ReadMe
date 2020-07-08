@@ -1,69 +1,91 @@
-# **Javafx Battleship**
+# **Javafx Angie's Pantry application**
 
 ## Synopsis
-This is a game of Battleship, it is a two player game where the first player picks the number of ships
-and places them in a grid. after which the second player tries to sink the ships.
+This is an application to keep and maintain an inventory for a kitchen pantry, the user can add to the inventory by entering the Item name, Item Quantity, item Row location, Item Column location, item expiration date.
+the user can also search the inventory to see what is infact inside the pantry before say buying something at the store.
 
 ## Motivation
-This is a program for the Object Oriented Programming CSCI-1110-OOP class at Southwest Tech. I created this program for my final project in that clas as it encompasses the requirements of the assignment.
+This is a program for the Algorithms and Data structures CSCI-1115 class at Southwest Tech. 
+I created this program for my final project in that clas as it encompasses the requirements of the assignment.
 
-## How to Play
-This game is played using a javafx GUI.
+## How to use
+This program is utilized via a javafx GUI.
 
-The game is played by the first player (the player owning the boats) picks the number of boats
-and places them in a 5x5 grid, choosing the ship placement by clicking the radio buttons at the top section of the pane with the mouse.[Boat PLacement.png](https://github.com/JasonW77/CSCI_1110_OOP_Coursework/blob/master/Final%20Project/Boat%20PLacement.png) 
-After the boat player has chosen the boat positions, the player will then click the confirm button to pass the turn to the second player or the "Bombs" player.
-The bombs player will choose the placement of the bombs to try and sink the ships. the placement of bombs is done by clicking the button grid at the bottom section of the pane with the mouse.
-[BombPlayerturn.png](https://github.com/JasonW77/CSCI_1110_OOP_Coursework/blob/master/Final%20Project/Bomb%20Player%20turn.png)
-the "Bomb" player will have 3 more bombs than the number of ships placed to try and sink the boat players ships.
+The program starts empty and the user can enter new items by clicking on the "Enter New Item" button. 
+The user will then enter an "Item Name", "Quantity", "Expiration", "Row Location", and "Column Loaction" in the respective fields.
+when the user finishes with the data entry, they will click the "Finish" button and the entry will be saved in the inventory.
 
-after all boats have been sunk, or all bombs have been dropped and there are boats left the game is over.[Game Over Example](https://github.com/JasonW77/CSCI_1110_OOP_Coursework/blob/master/Final%20Project/Game%20end.png)
-there will be a print out of the score in the console and the game will restart.
+To search for an item already in the inventory, the user will click the "Item Search" button. then enter the name of the item to be searched and hit the enter key, if the item is in the database the information will be returned.
+
+At any point in a data entry if a mistake has been made or the user wishes to cancel thier input or task they can click the "Clear Entry" button to return to the previous menu.
+
+
+
+[Game Over Example](https://github.com/JasonW77/CSCI_1110_OOP_Coursework/blob/master/Final%20Project/Game%20end.png)
+
 [Score Sheet](https://github.com/JasonW77/CSCI_1110_OOP_Coursework/blob/master/Final%20Project/Score%20sheet.png), this time the second player will be placing the boats and the first player will be dropping bombs.
 
-
-
-
 ## Code Example
-here is a code example of player one placing thier ships.
+here is a code example of the user adding an item to the database.
 
 ```
-//Boat counter radio button onActions these keep track of the number of boats placed.
-			rb1_1.setOnAction(e -> {
-				if (rb1_1.isSelected()) {
-					boats++;
-					btLeft.setDisable(false);
-				}
-				else {
-					boats--;
-					if(boats <= 0) {
-						btLeft.setDisable(true);
-					}
-				}
-			});
+		btFinish.setOnAction(e -> {
+			//Enter new item Pantry() constructor and add to map
+			SimpleDateFormat eDate = new SimpleDateFormat("dd/mm/yy");
+			String iN = itemName.getText().trim();
+			int iQ = Integer.parseInt(itemQuan.getText().trim());
+			java.util.Date iE = new java.util.Date();
+			try {
+				iE = eDate.parse(itemExp.getText().trim());
+			} catch (ParseException parseEx) {
+				parseEx.printStackTrace();
+			}
+			int iRL = Integer.parseInt(itemRLoc.getText().trim());
+			int iCL = Integer.parseInt(itemCLoc.getText().trim());
+			
+			Pantry pan = new Pantry(iN, iQ, iE, iRL, iCL);
+			map.put(pan.getIn(), pan);
+			
+			System.out.println(pan.myToString() + "\n");
 ```
 ## Code Example
-here is a code example of player two dropping thier bombs.
+here is a code example of the user search function.
 
 ```
-//Bomb Drop Buttons setOnAction assignments, changes color for hit/miss as well as counts the hit/miss counters and depletes bomb count
-			bo1_1.setOnAction(e -> {
-				if (rb1_1.isSelected()) {
-					rb1_1.setStyle("-fx-color: RED");
-					rb1_1.setVisible(true);
-					bo1_1.setDisable(true);
-					hits++;
-					boatleft--;
+		itemName.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER){
+				if (itemQuan.isVisible() != true){
+				String seaItem;
+				
+				itemName.setVisible(false);
+				itemQuan.setVisible(false);
+				itemExp.setVisible(false);
+				itemRLoc.setVisible(false);
+				itemCLoc.setVisible(false);
+				
+				label1.setVisible(true);
+				label2.setVisible(true);
+				label3.setVisible(true);
+				label4.setVisible(true);
+				label5.setVisible(true);
+				
+				btFinish.setVisible(false);
+				btNewItem.setVisible(false);
+				btItemSearch.setVisible(false);
+				btClearEntry.setVisible(true);
+				
+				seaItem = itemName.getText().trim();
+				System.out.println("Search Item Detected: " + seaItem);
+				System.out.println(map.get(seaItem));
+				
+				label1.setText("Item Name: " + ((Pantry) map.get(seaItem)).getIn());
+				label2.setText("Quantity: " + ((Pantry) map.get(seaItem)).getQuantity());
+				label3.setText("Expiration: " + ((Pantry) map.get(seaItem)).getExpiration());
+				label4.setText("Row Location: " + ((Pantry) map.get(seaItem)).getRow());
+				label5.setText("Column Location: " + ((Pantry) map.get(seaItem)).getColumn());
 				}
-				else {
-					rb1_1.setStyle("-fx-color: LIGHTBLUE");
-					rb1_1.setVisible(true);
-					bo1_1.setDisable(true);
-					miss++;
-				}
-				bombs--;
-				gameOver();
-			});
+			}
+		});
 ```
 
 ## Tests
