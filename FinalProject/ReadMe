@@ -19,7 +19,7 @@ when the user finishes with the data entry, they will click the "Finish" button 
 [Item Entry Exaample] (https://github.com/JasonW77/CSCI_1115_DataStructures_Coursework/blob/master/FinalProject/Screen%20Shot%202020-07-08%20at%2011.10.19%20AM.png)
 
 To search for an item already in the inventory, the user will click the "Item Search" button. then enter the name of the item to be searched and hit the enter key, if the item is in the database the information will be returned.
-[Item Search Example](https://github.com/JasonW77/CSCI_1115_DataStructures_Coursework/blob/master/FinalProject/Screen%20Shot%202020-07-08%20at%2011.10.41%20AM.png)
+[Item Search Example](https://github.com/JasonW77/CSCI_1115_DataStructures_Coursework/blob/master/FinalProject/Screen%20Shot%202020-07-08%20at%2011.09.46%20AM.png)
 
 At any point in a data entry if a mistake has been made or the user wishes to cancel thier input or task they can click the "Clear Entry" button to return to the previous menu.
 [Cancel Entry Example]()
